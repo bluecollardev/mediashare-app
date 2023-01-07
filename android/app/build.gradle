@@ -90,7 +90,9 @@ project.ext.react = [
 ]
 
 apply from: new File(reactNativeRoot, "react.gradle")
-
+// Custom entry for react-native-config
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+// END custom entry
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices
@@ -143,7 +145,7 @@ android {
             cruncherEnabled = false
         }
     }
-    
+
     ndkVersion rootProject.ext.ndkVersion
 
     compileSdkVersion rootProject.ext.compileSdkVersion

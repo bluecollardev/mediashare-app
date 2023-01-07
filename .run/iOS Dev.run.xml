@@ -1,8 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="iOS Dev" type="ReactNative" factoryName="React Native">
-    <working-dir value="$PROJECT_DIR$/mediashare" />
     <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.13.1/bin/node" />
-    <react-native value="$PROJECT_DIR$/mediashare/node_modules/react-native-cli" />
+    <react-native value="$PROJECT_DIR$/node_modules/react-native-cli" />
     <platform value="IOS" />
     <run-arguments value="--scheme &quot;mediashare-development&quot;" />
     <envs />
