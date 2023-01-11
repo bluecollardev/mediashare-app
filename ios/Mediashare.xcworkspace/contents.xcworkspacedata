@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/lucas/Workspaces/bluecollar_mediashare-app/mediashare/ios/Mediashare.xcodeproj">
+      location = "group:/Users/lucas/Workspaces/bluecollar_mediashare-app/ios/Mediashare.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -1,39 +1,48 @@
-# Development Client with TypeScript example
+# Mediashare Phone App
 
-<p>
-  <!-- iOS -->
-  <img alt="Supports Expo iOS" longdesc="Supports Expo iOS" src="https://img.shields.io/badge/iOS-4630EB.svg?style=flat-square&logo=APPLE&labelColor=999999&logoColor=fff" />
-  <!-- Android -->
-  <img alt="Supports Expo Android" longdesc="Supports Expo Android" src="https://img.shields.io/badge/Android-4630EB.svg?style=flat-square&logo=ANDROID&labelColor=A4C639&logoColor=fff" />
-</p>
+## Running the Mediashare App and API
 
-Experiment with Development Client in SDK 40.
+**Prerequisites:**
+You will need to have Node.js, npm, yarn, and Docker installed locally
 
-## 🚀 How to use
+**Important**
+There are three repositories for this project.
+- https://github.com/bluecollardev/mediashare-app - The branded phone app
+- https://github.com/bluecollardev/mediashare-source - The whitelabel phone app
+- https://github.com/bluecollardev/mediashare - The API for the phone app
 
-> `npx create-react-native-app my-app -t with-dev-client`
+To run the project locally, you will need to start both of them. You will also have to start the database.
 
-- Run `expo start --dev-client` to try it out.
+### Running the Phone App in iOS Simulator
 
-## 🏗 Build with EAS
+To run the project against staging environment, just start the phone app. To run the phone app, open a terminal window and run the following commands:
 
-You can easily use this project with `EAS` - just follow the steps below.
+```shell
+  yarn install # If you haven't already
+```
 
-### ⚙️ Prepare project
+First, start the Metro bundler on port 8081:
 
-- adjust value of `ios.bundleIdentifier` and `android.package` in `app.json`
-- run `eas build:configure`
+```shell
+  yarn start
+```
 
-### 💪 Build whatever you want
+Then, open another terminal and start the Phone App in iOS Simulator:
 
-This example comes with two pre-configured build types: `release` (a production version of your app - ready to be uploaded to stores), `with-dev-client` (a development version of your app that can be shared with your teammates).
+```shell
+  yarn ios:local # Run using local env vars and APIs
+  # or
+  yarn ios:staging # Run using staging env vars and APIs
+  # or
+  yarn ios:prod # Run using production env vars and APIs
+```
 
-To build the app with the dev client, just run `eas build --profile with-dev-client`.
+### Troubleshooting
 
-> **Note**: the `with-dev-client` uses the **internal distribution** on **iOS**. That's why, you need to add your device to be able to install the built app. To do it, you can use `eas device:create`.
+If you update Podfile (iOS native dependencies), try installing or refreshing the iOS Pods:
 
-**For more information about EAS, check out [documentation](https://docs.expo.dev/eas/).**
-
-## 📝 Notes
-
-- [Development Client docs](https://docs.expo.dev/clients/introduction/)
+```shell
+  yarn util:ios:install-pods
+  # or
+  yarn util:ios:refresh-pods
+```
