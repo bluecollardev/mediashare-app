@@ -1,0 +1,34 @@
+diff --git a/node_modules/react-native-web/dist/exports/render/index.js b/node_modules/react-native-web/dist/exports/render/index.js
+index 85f6fad..e2fdedc 100644
+--- a/node_modules/react-native-web/dist/exports/render/index.js
++++ b/node_modules/react-native-web/dist/exports/render/index.js
+@@ -6,13 +6,26 @@
+  *
+  *
+  */
+-import { hydrate as domHydrate, render as domRender } from 'react-dom';
++import { hydrateRoot, createRoot } from 'react-dom/client';
+ import { createSheet } from '../StyleSheet/dom';
++
++const roots = new WeakMap();
++
+ export function hydrate(element, root, callback) {
+   createSheet(root);
+-  return domHydrate(element, root, callback);
++  const reactRoot = hydrateRoot(root, element);
++  roots.set(root, reactRoot);
++  if (typeof callback === 'function') callback();
++  return reactRoot;
+ }
+ export default function render(element, root, callback) {
+   createSheet(root);
+-  return domRender(element, root, callback);
++  let reactRoot = roots.get(root);
++  if (!reactRoot) {
++    reactRoot = createRoot(root);
++    roots.set(root, reactRoot);
++  }
++  reactRoot.render(element);
++  if (typeof callback === 'function') callback();
++  return reactRoot;
+ }
